@@ -1,13 +1,32 @@
 ﻿<h1>Add Userr</h1>
 
+@if (ViewBag.error != null)
+{
+    <p>@ViewBag.error</p>
+}
+
 <form method="post" action="/user">
     <div class="form-group">
         <label for="Username">Username</label>
-        <input name="Username" type="text" />
+        @if (ViewBag.error == null)
+        {
+            <input type="text" name="username" />
+        }
+        else
+        {
+            <input type="text" name="username" value="@ViewBag.userName" />
+        }
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input name="email" type="email" />
+        @if (ViewBag.error == null)
+        {
+            <input type="email" name="email" />
+        }
+        else
+        {
+            <input type="email" name="email" value="@ViewBag.email" />
+        }
     </div>
     <div class="form-group">
         <label for="password">Password</label>

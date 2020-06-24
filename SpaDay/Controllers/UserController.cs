@@ -29,8 +29,10 @@ namespace SpaDay.Controllers
                 ViewBag.user = newUser;
                 return View("Index");
             }
-            
-            return View();
+            ViewBag.error = "Passwords don't match!";
+            ViewBag.userName = newUser.Username;
+            ViewBag.email = newUser.Email;
+            return View("Add");
         }
     }
 }
