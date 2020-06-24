@@ -10,6 +10,8 @@ namespace SpaDay.Controllers
 {
     public class SpaController : Controller
     {
+        static private Dictionary<string, string> Events = new Dictionary<string, string>();
+
         public bool CheckSkinType(string skinType, string facialType)
         {
 
@@ -33,11 +35,16 @@ namespace SpaDay.Controllers
 
         }
 
+        //GET: /spa
         public IActionResult Index()
         {
+
+            ViewBag.events = Events;
+
             return View();
         }
 
+        // POST: /spa
         [HttpPost]
         [Route("/spa")]
         public IActionResult Menu(string name, string skintype, string manipedi)
@@ -55,6 +62,12 @@ namespace SpaDay.Controllers
                     appropriateFacials.Add(facials[i]);
                 }
             }
+
+            Events.Add(name, manipedi);
+            ViewBag.events = Events;
+            ViewBag.skintype = skintype;
+            ViewBag.appropriateFacials = appropriateFacials;
+            ViewBag.manipedi = manipedi;
             return View();
         }
 
