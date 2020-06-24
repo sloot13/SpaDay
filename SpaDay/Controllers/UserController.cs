@@ -26,7 +26,7 @@ namespace SpaDay.Controllers
         {
             if( newUser.Password == verify)
             {
-                ViewBag.userName = newUser.Username;
+                ViewBag.user = newUser;
                 return View("Index");
             }
             
